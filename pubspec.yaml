@@ -31,6 +31,11 @@ dependencies:
     sdk: flutter
   flutter_native_splash: ^1.2.0
   flutter_launcher_icons: ^0.9.1
+  carousel_slider: ^4.1.1
+  dio: ^4.0.4
+  build_runner: ^2.1.2
+  json_annotation: ^4.0.1
+  json_serializable: ^4.1.4
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,7 +44,7 @@ dependencies:
 
 flutter_native_splash:
   color: "#000000"
-  image: "assets/images/uol-logo-full.png"
+  image: "assets/images/uol-logo-full-light.png"
   android: true
   ios: true
 
@@ -73,10 +78,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+      - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
