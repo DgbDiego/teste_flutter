@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:teste_flutter/models/movie_result_model.dart';
 import 'package:teste_flutter/util/const.dart';
 
 class FilmesListsService{
@@ -17,7 +18,31 @@ class FilmesListsService{
     });
 
     if (response.data != null && response.data.toString().isNotEmpty){
-      return response.data;
+      List<MovieResult> movieResults = [];
+      (response.data['results'] as List).forEach((movie) {
+        movieResults.add(MovieResult.fromJson(movie));
+      });
+      print('~~');
+      return movieResults;
+    } else {
+      return null;
+    }
+  }
+
+  Future<dynamic> getPopular() async {
+    Response response = await dio!.get('popular?api_key=${const_apiKey}&language=pt-BR&page=1').catchError((e){
+      print(e);
+    });
+
+    if (response.data != null && response.data.toString().isNotEmpty){
+      List<MovieResult> movieResults = [];
+      (response.data['results'] as List).forEach((movie) {
+        movieResults.add(MovieResult.fromJson(movie));
+      });
+
+      return movieResults;
+    } else {
+      return null;
     }
   }
 
