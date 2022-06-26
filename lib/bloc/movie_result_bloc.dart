@@ -32,7 +32,12 @@ class LoadNowPlayingEvent extends MovieEvent{}
 class LoadPopularEvent extends MovieEvent{}
 
 class LoadingMovieEvent extends MovieEvent{}
-class LoadSingleMovieEvent extends MovieEvent{}
+class LoadSingleMovieEvent extends MovieEvent{
+  int movieId;
+  LoadSingleMovieEvent({
+    required this.movieId
+});
+}
 
 class AddMovieEvent extends MovieEvent{
   MovieResult movie;
@@ -72,7 +77,7 @@ class MovieResultBloc extends Bloc<MovieEvent, MovieState>{
     );
     on<LoadSingleMovieEvent>(
         (event, emit) async {
-          var movies = await _movieService.getPopular();
+          var movies = await _movieService.getSingleMovie(event.movieId);
           emit(MovieSuccessState(movies: movies));
         }
     );

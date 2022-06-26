@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     movies_exibicao_bloc = MovieResultBloc();
     movies_exibicao_bloc.add(LoadNowPlayingEvent());
     movies_popular_bloc = MovieResultBloc();
-    movies_popular_bloc.add(LoadNowPlayingEvent());
+    movies_popular_bloc.add(LoadPopularEvent());
   }
 
   @override
