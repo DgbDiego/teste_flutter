@@ -46,6 +46,22 @@ class FilmesListsService{
     }
   }
 
+  Future<dynamic> getSingleMovie(int movieId) async {
+    Response response = await dio!.get('${movieId}?api_key=${const_apiKey}&language=pt-BR').catchError((e){
+      print(e);
+    });
+
+    if (response.data != null && response.data.toString().isNotEmpty){
+      List<MovieResult> movieResults = [];
+      (response.data['results'] as List).forEach((movie) {
+        movieResults.add(MovieResult.fromJson(movie));
+      });
+      return movieResults;
+    } else {
+      return null;
+    }
+  }
+
 
 
 
