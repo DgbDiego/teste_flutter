@@ -17,11 +17,12 @@ final uolTheme = ThemeData(
   accentIconTheme: IconThemeData(color: Colors.white),
   dividerColor: Colors.black12,
   textTheme: TextTheme(
+
     bodyText1: TextStyle(),
     bodyText2: TextStyle(),
     ).apply(
-      bodyColor: Colors.white,
-      displayColor: Colors.white,
+      bodyColor: Colors.white70,
+      displayColor: Colors.white70,
       ),
 );
 final ThemeData const_theme = uolTheme;
