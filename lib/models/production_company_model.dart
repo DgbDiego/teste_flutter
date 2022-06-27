@@ -5,15 +5,15 @@ part 'production_company_model.g.dart';
 @JsonSerializable()
 class ProductionCompany {
   late int id;
-  late String logoPath;
+  late String? logo_path;
   late String name;
-  late String originCountry;
+  late String origin_country;
 
   ProductionCompany({
     required this.id,
-    required this.logoPath,
+    this.logo_path,
     required this.name,
-    required this.originCountry,
+    required this.origin_country,
   });
 
   factory ProductionCompany.fromJson(Map<String, dynamic> json) => _$ProductionCompanyFromJson(json);

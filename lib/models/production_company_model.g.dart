@@ -9,16 +9,16 @@ part of 'production_company_model.dart';
 ProductionCompany _$ProductionCompanyFromJson(Map<String, dynamic> json) {
   return ProductionCompany(
     id: json['id'] as int,
-    logoPath: json['logoPath'] as String,
+    logo_path: json['logo_path'] as String?,
     name: json['name'] as String,
-    originCountry: json['originCountry'] as String,
+    origin_country: json['origin_country'] as String,
   );
 }
 
 Map<String, dynamic> _$ProductionCompanyToJson(ProductionCompany instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'logoPath': instance.logoPath,
+      'logo_path': instance.logo_path,
       'name': instance.name,
-      'originCountry': instance.originCountry,
+      'origin_country': instance.origin_country,
     };

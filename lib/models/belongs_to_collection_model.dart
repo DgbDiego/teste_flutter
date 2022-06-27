@@ -7,14 +7,14 @@ class BelongsToCollection {
 
   late int id;
   late String name;
-  late String posterPath;
-  late String backdropPath;
+  late String poster_path;
+  late String backdrop_path;
 
   BelongsToCollection({
     required this.id,
     required this.name,
-    required this.posterPath,
-    required this.backdropPath,
+    required this.poster_path,
+    required this.backdrop_path,
   });
 
   BelongsToCollection.padrao();

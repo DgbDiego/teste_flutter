@@ -4,11 +4,11 @@ part 'production_country_model.g.dart';
 
 @JsonSerializable()
 class ProductionCountry {
-  late String iso31661;
+  late String iso_3166_1;
   late String name;
 
   ProductionCountry({
-    required this.iso31661,
+    required this.iso_3166_1,
     required this.name,
   });
 

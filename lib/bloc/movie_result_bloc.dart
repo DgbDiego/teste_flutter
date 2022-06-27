@@ -1,11 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:teste_flutter/models/movie_result_model.dart';
 import 'package:teste_flutter/services/filmes_lists_service.dart';
-
-
 
 abstract class MovieState{
   List<MovieResult> movies;
@@ -30,14 +25,7 @@ abstract class MovieEvent{}
 
 class LoadNowPlayingEvent extends MovieEvent{}
 class LoadPopularEvent extends MovieEvent{}
-
 class LoadingMovieEvent extends MovieEvent{}
-class LoadSingleMovieEvent extends MovieEvent{
-  int movieId;
-  LoadSingleMovieEvent({
-    required this.movieId
-});
-}
 
 class AddMovieEvent extends MovieEvent{
   MovieResult movie;
@@ -56,12 +44,6 @@ class MovieResultBloc extends Bloc<MovieEvent, MovieState>{
 
   final _movieService = FilmesListsService();
 
-  // final StreamController<MovieEvent> _inputMovieController = StreamController<MovieEvent>();
-  // final StreamController<MovieState> _outputMovieController = StreamController<MovieState>();
-  //
-  // Sink<MovieEvent> get inputMovie => _inputMovieController.sink;
-  // Stream<MovieState> get stream => _outputMovieController.stream;
-
   MovieResultBloc() : super(MovieInitialState()){
     on<LoadNowPlayingEvent>(
         (event, emit) async {
@@ -75,14 +57,6 @@ class MovieResultBloc extends Bloc<MovieEvent, MovieState>{
           emit(MovieSuccessState(movies: movies));
         }
     );
-    on<LoadSingleMovieEvent>(
-        (event, emit) async {
-          var movies = await _movieService.getSingleMovie(event.movieId);
-          emit(MovieSuccessState(movies: movies));
-        }
-    );
-
   }
-
 
 }
