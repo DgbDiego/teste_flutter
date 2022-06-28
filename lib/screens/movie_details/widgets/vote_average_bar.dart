@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class VoteAverageBar{
@@ -8,8 +7,6 @@ class VoteAverageBar{
   }){
 
     Color? avgColor(var value){
-      var response;
-
       if (value < 0.5 ) {
         return Colors.redAccent;
       } else if (value >= 0.5 && value < 0.7){
@@ -17,30 +14,6 @@ class VoteAverageBar{
       } else if (value >= 0.7){
         return Colors.greenAccent;
       }
-    }
-    Color? avgColorBG(var value){
-      var response;
-
-      if (value < 0.5 ) {
-        return Colors.red;
-      } else if (value >= 0.5 && value < 0.7){
-        return Colors.orange;
-      } else if (value >= 0.7){
-        return Colors.green;
-      }
-    }
-
-    Color? customLerpColor(var value) {
-      return Color.lerp(
-          Colors.deepOrange,
-          Color(0xff156E44),
-          value);
-    }
-    Color? customLerpColorBG(var value) {
-      return Color.lerp(
-          Colors.deepOrange,
-          Color(0xff0E472C),
-          value);
     }
 
     return Container(
@@ -68,41 +41,29 @@ class VoteAverageBar{
                         (voteAvg*10).round().toString()+'%',
                         softWrap: true,
                         style: const TextStyle(
-                          // color: Colors.white54,
                             fontSize: 22,
                             fontWeight: FontWeight.bold
-
                         ),
                       ),
                     ),
-
                   ),
                 )
             ),
             Flexible(
               flex: 5,
-              child: Stack(
-                  clipBehavior: Clip.none, alignment: Alignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: LinearProgressIndicator(
-                        value: (voteAvg/10),
-                        backgroundColor: Colors.black38,
-                        color: Colors.white,
-                        minHeight: 15,
-                      ),
-                    ),
-
-                  ],
-                )
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: LinearProgressIndicator(
+                  value: (voteAvg/10),
+                  backgroundColor: Colors.black38,
+                  color: Colors.white,
+                  minHeight: 15,
+                ),
+              )
             )
           ],
         ),
       ),
-
     );
-
   }
-
 }
