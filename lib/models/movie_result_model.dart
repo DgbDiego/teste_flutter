@@ -13,7 +13,7 @@ class MovieResult{
   late String overview;
   late double popularity;
   late String poster_path;
-  late String date;
+  late String release_date;
   late String title;
   late bool video;
   late double vote_average;
@@ -29,7 +29,7 @@ class MovieResult{
     required this.overview,
     required this.popularity,
     required this.poster_path,
-    required this.date,
+    required this.release_date,
     required this.title,
     required this.video,
     required this.vote_average,

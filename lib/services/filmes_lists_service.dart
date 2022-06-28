@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:teste_flutter/models/movie_detail_model.dart';
 import 'package:teste_flutter/models/movie_result_model.dart';
 import 'package:teste_flutter/util/const.dart';
 
@@ -22,7 +23,6 @@ class FilmesListsService{
       (response.data['results'] as List).forEach((movie) {
         movieResults.add(MovieResult.fromJson(movie));
       });
-      print('~~');
       return movieResults;
     } else {
       return null;
@@ -41,6 +41,20 @@ class FilmesListsService{
       });
 
       return movieResults;
+    } else {
+      return null;
+    }
+  }
+
+  Future<dynamic> getSingleMovie(int movieId) async {
+    Response response = await dio!.get('${movieId}?api_key=${const_apiKey}&language=pt-BR').catchError((e){
+      print(e);
+    });
+
+    if (response.data != null && response.data.toString().isNotEmpty){
+      MovieDetail movieDetail;
+      movieDetail = MovieDetail.fromJson(response.data);
+      return movieDetail;
     } else {
       return null;
     }
