@@ -6,8 +6,6 @@ import 'package:teste_flutter/screens/movie_details/movie_details_screen.dart';
 import 'package:teste_flutter/util/const.dart';
 
 class CarouselMovies{
-
-
   Widget carouselMovies({
     required BuildContext context,
     required String carouselTitle,
@@ -19,7 +17,14 @@ class CarouselMovies{
         children: [
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Text(carouselTitle,style: const TextStyle(fontWeight: FontWeight.bold),),
+            child: Text(
+              carouselTitle,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.white
+              ),
+            ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.width/2,
