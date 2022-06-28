@@ -11,11 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   late final MovieResultBloc moviesExibicaoBloc;
   late final MovieResultBloc moviesPopularBloc;
-
 
   @override
   void initState(){
@@ -32,22 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
     moviesPopularBloc.close();
     super.dispose();
   }
-
-
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: (){},
-              icon: const Icon(Icons.share_sharp))
-        ],
-        leading: IconButton(
-          onPressed: (){},
-          icon: const Icon(Icons.menu),
-        ),
         backgroundColor: const Color(0x00000000),
         elevation: 0,
         centerTitle: true,

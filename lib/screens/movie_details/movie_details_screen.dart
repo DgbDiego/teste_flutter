@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teste_flutter/bloc/movie_detail_bloc.dart';
 import 'package:teste_flutter/models/genre_model.dart';
 import 'package:teste_flutter/models/movie_detail_model.dart';
-import 'package:teste_flutter/models/movie_result_model.dart';
 import 'package:teste_flutter/screens/movie_details/widgets/vote_average_bar.dart';
 import 'package:teste_flutter/util/const.dart';
 
@@ -26,9 +25,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   String concatGenre(List<Genre>? genres) {
     List<String> temp = [];
-    genres!.forEach((element) {
+    for (var element in genres!) {
       temp.add(element.name);
-    });
+    }
     String result = temp.join(' - ');
     return result;
   }
@@ -57,7 +56,6 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
             selectedMovie = state.movie;
             return Stack(
               children: [
-
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,25 +71,27 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     SizedBox(
                      height: MediaQuery.of(context).size.width/3.6,
                      child: Padding(
-                         padding: EdgeInsets.all(10),
+                         padding: const EdgeInsets.all(10),
                        child: Row(
                          mainAxisSize: MainAxisSize.max,
-                         mainAxisAlignment: MainAxisAlignment.end,
+                         mainAxisAlignment: MainAxisAlignment.start,
                          crossAxisAlignment: CrossAxisAlignment.center,
                          children: [
+                           Flexible(
+                             flex: 2,
+                             child: SizedBox(
+                               width: MediaQuery.of(context).size.width/2.9,
+                             ),
+                           ),
                            Flexible(
                              flex:3,
                              child: Text(
                                selectedMovie.title,
-                               style: TextStyle(fontSize: 24),
+                               style: const TextStyle(fontSize: 28),
                                softWrap: true,
 
                              ),
                            ),
-                           Flexible(
-                             flex: 2,
-                             child: SizedBox(),
-                           )
                          ],
                        ),
                      ),
@@ -106,8 +106,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           Text(
                             selectedMovie.overview,
                             softWrap: true,
-                            style: TextStyle(
-
+                            style: const TextStyle(
+                              fontSize: 16
                             ),
                           )
                         ],
@@ -120,11 +120,11 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Gênero:'),
+                          const Text('Gênero:'),
                           Text(
                             concatGenre(selectedMovie.genres),
                             softWrap: true,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white54
 
                             ),
@@ -134,7 +134,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     ),
                     ///Avaliacao
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,16 +151,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               VoteAverageBar().voteAverage(voteAvg: selectedMovie.vote_average)
                             ],
                           ),
-
-
                         ],
                       ),
                     )
-
-
-
-
-
                   ],
                 ),
                 Positioned(
@@ -177,27 +170,6 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     ),
                   ),
                 ),
-
-              ],
-            );
-            return CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  pinned: false,
-                  backgroundColor: Colors.transparent,
-
-                  expandedHeight: MediaQuery.of(context).size.width/1.7,
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: Text(selectedMovie.title),
-                    background: Image.network(
-                        BASE_IMG_URL + selectedMovie.backdrop_path,fit: BoxFit.fitHeight,
-                    ),
-
-
-                  ),
-
-
-                ),
               ],
             );
           }
@@ -206,6 +178,4 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
       ),
     );
   }
-
-
 }
