@@ -38,7 +38,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState>{
     on<LoadMovieDetailEvent>(
         (event, emit) async {
           var movie = await _movieDetailService.getSingleMovie(event.id);
-          emit(MovieDetailSuccessState(movie: movie));
+          emit(MovieDetailSuccessState(movie: movie));///TODO AAAA
         }
     );
   }
