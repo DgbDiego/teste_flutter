@@ -4,6 +4,7 @@ import 'package:teste_flutter/bloc/movie_detail_bloc.dart';
 import 'package:teste_flutter/models/genre_model.dart';
 import 'package:teste_flutter/models/movie_detail_model.dart';
 import 'package:teste_flutter/models/movie_result_model.dart';
+import 'package:teste_flutter/screens/movie_details/widgets/vote_average_bar.dart';
 import 'package:teste_flutter/util/const.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
@@ -138,15 +139,20 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Avaliação dos usuários:'),
-                          Text(
-                            (selectedMovie.vote_average*10).round().toString()+'%',
-                            softWrap: true,
-                            style: TextStyle(
-                              color: Colors.white54
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 8.0),
+                            child: Text('Avaliação dos usuários:'),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              VoteAverageBar().voteAverage(voteAvg: selectedMovie.vote_average)
+                            ],
+                          ),
 
-                            ),
-                          )
+
                         ],
                       ),
                     )
